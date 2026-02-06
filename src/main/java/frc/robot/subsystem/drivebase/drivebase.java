@@ -33,5 +33,11 @@ public class drivebase extends SubsystemBase {
   public Command backwardincm(double velocity, int centermeters) {
     return run(() -> io.backwardincm(velocity, centermeters));
   }
+  public Command forwardininches(double velocity, int centermeters) {
+    return run(() -> io.forwardininches(velocity, centermeters));
+  }
+  public Command backwardininches(double velocity, int centermeters) {
+    return run(() -> io.backwardininches(velocity, centermeters));
+  }
 
 }

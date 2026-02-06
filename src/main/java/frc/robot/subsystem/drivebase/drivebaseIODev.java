@@ -66,6 +66,30 @@ public class drivebaseIODev implements drivebaseIO {
         bottomright.stopMotor();
     }
     @Override
+    public void forwardininches(double velocity, int inches){
+        topleft.getEncoder().setPosition(0);
+        double position = topleft.getEncoder().getPosition();
+        double cimcufarance = Math.PI * WheelDiameterinCM;
+        double rotationstotake = inches*2.54 / cimcufarance;
+        forward(velocity);
+        while (position != rotationstotake) {
+            System.out.println("not yet");
+        }
+        stop();
+    }
+    @Override
+    public void backwardininches(double velocity, int inches){
+        topleft.getEncoder().setPosition(0);
+        double position = topleft.getEncoder().getPosition();
+        double cimcufarance = Math.PI * WheelDiameterinCM;
+        double rotationstotake = inches*2.54 / cimcufarance;
+        backward(velocity);
+        while (position != rotationstotake) {
+            System.out.println("not yet");
+        }
+        stop();
+    }
+    @Override
     public void forwardincm(double velocity, int centermeters){
         topleft.getEncoder().setPosition(0);
         double position = topleft.getEncoder().getPosition();

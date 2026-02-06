@@ -19,6 +19,8 @@ public interface drivebaseIO {
   public default void stop(){}
   public default void forwardincm(double velocity, int centermeters){}
   public default void backwardincm(double velocity, int centermeters){}
+  public default void forwardininches(double velocity, int centermeters){}
+  public default void backwardininches(double velocity, int centermeters){}
   public default void turndegress(double velocity, int angle, String direction){}
 
 }
