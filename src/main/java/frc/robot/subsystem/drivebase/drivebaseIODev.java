@@ -77,6 +77,18 @@ public class drivebaseIODev implements drivebaseIO {
         }
         stop();
     }
+    @Override
+    public void backwardincm(double velocity, int centermeters){
+        topleft.getEncoder().setPosition(0);
+        double position = topleft.getEncoder().getPosition();
+        double cimcufarance = Math.PI * WheelDiameterinCM;
+        double rotationstotake = centermeters / cimcufarance;
+        backward(velocity);
+        while (position != rotationstotake) {
+            System.out.println("not yet");
+        }
+        stop();
+    }
         @Override
     public void turndegress(double velocity, int angle, String direction){
         if (direction == "left") {

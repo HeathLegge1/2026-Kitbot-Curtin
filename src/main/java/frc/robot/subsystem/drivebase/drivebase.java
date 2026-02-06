@@ -30,5 +30,8 @@ public class drivebase extends SubsystemBase {
   public Command turndegress(double velocity, int angle, String direction){
     return run(() -> io.turndegress(velocity, angle, direction));
   }
+  public Command backwardincm(double velocity, int centermeters) {
+    return run(() -> io.backwardincm(velocity, centermeters));
+  }
 
 }

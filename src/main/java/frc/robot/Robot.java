@@ -182,7 +182,19 @@ public class Robot extends LoggedRobot {
 
   /** This function is called once when test mode is enabled. */
   @Override
-  public void testInit() {}
+  public void testInit() {
+    try{
+      drivebaseIODev.turndegress(1, 90, "left");
+      Thread.sleep(1000);
+      drivebaseIODev.turndegress(1, 90, "right");
+      Thread.sleep(1000);
+      drivebaseIODev.forwardincm(1, 5);
+      Thread.sleep(1000);
+      drivebaseIODev.backwardincm(1,5);
+    }catch(Exception e){
+
+    }
+  }
 
   /** This function is called periodically during test mode. */
   @Override
