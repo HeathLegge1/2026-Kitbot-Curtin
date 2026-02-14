@@ -13,8 +13,8 @@ public interface ballsshooterIO {
   public default void updateInputs(ballsshooterIOinputs inputs) {}
 
   public default void setVoltage(double voltage) {}
-  public default void startshooting(double velocity){}
-  public default void stopshooting(){}
 
+  public default void startshooting(double velocity) {}
 
+  public default void stopshooting() {}
 }

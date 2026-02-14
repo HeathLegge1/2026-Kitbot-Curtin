@@ -13,8 +13,8 @@ public interface ballsasorberIO {
   public default void updateInputs(ballsasorberIOinputs inputs) {}
 
   public default void setVoltage(double voltage) {}
-  public default void startsucking(double velocity){}
-  public default void stopsucking(){}
 
+  public default void startsucking(double velocity) {}
 
+  public default void stopsucking() {}
 }
