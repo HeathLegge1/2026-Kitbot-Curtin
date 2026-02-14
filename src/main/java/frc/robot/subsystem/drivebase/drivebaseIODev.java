@@ -1,10 +1,15 @@
 package frc.robot.subsystem.drivebase;
+import java.util.function.BooleanSupplier;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.SPI.Port;
 
 import com.revrobotics.spark.SparkMax;
+
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+
 
 
 public class drivebaseIODev implements drivebaseIO {
@@ -24,7 +29,30 @@ public class drivebaseIODev implements drivebaseIO {
         this.WheelDiameterinCM = WheelDiameterinCM;
     }
 
+    public BooleanSupplier getgyroistrue(int anglethatstrue){
+      if (gyro.getAngle() >= anglethatstrue - 10){
+            BooleanSupplier condition = () -> true;
+            return condition;
+       }else{
+            BooleanSupplier condition = () -> false;
+            return condition;
+        }
+    }
+    @Override
+    public void setVoltage(double voltage){
+        topleft.setVoltage(voltage);
+        topright.setVoltage(voltage);
+        bottomleft.setVoltage(voltage);
+        bottomright.setVoltage(voltage);
+    }
 
+    @Override
+    public void set2Voltage(double voltageleft, double voltageright){
+        topleft.setVoltage(voltageleft);
+        topright.setVoltage(voltageleft);
+        bottomleft.setVoltage(voltageright);
+        bottomright.setVoltage(voltageright);
+    }
 
     @Override
     public void forward(double velocity){
@@ -79,15 +107,19 @@ public class drivebaseIODev implements drivebaseIO {
     }
     @Override
     public void backwardininches(double velocity, int inches){
-        topleft.getEncoder().setPosition(0);
-        double position = topleft.getEncoder().getPosition();
-        double cimcufarance = Math.PI * WheelDiameterinCM;
-        double rotationstotake = inches*2.54 / cimcufarance;
+        // topleft.getEncoder().setPosition(0);
+        // double position = topleft.getEncoder().getPosition();
+        // double cimcufarance = Math.PI * WheelDiameterinCM;
+        // double rotationstotake = inches*2.54 / cimcufarance;
         backward(velocity);
-        while (position != rotationstotake) {
-            System.out.println("not yet");
-        }
-        stop();
+        // while (position != rotationstotake) {
+        //     System.out.println("not yet");
+        // }
+        // stop();
+    }
+    @Override
+    public double getrotations(){
+        return topleft.getEncoder().getPosition();
     }
     @Override
     public void forwardincm(double velocity, int centermeters){
@@ -136,5 +168,6 @@ public class drivebaseIODev implements drivebaseIO {
             }
         }
     }
+
     
 }

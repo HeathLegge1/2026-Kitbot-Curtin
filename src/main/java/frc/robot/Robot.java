@@ -124,23 +124,16 @@ public class Robot extends LoggedRobot {
     if (xboxController.getBButtonPressed() == true && throwing == false) {
         ballsasorberIODev.startsucking(1);
         asorbing = true;
-    }
-    if (xboxController.getBButtonReleased() == true && asorbing == true){
+    }else if (xboxController.getBButtonReleased() == true && asorbing == true){
       asorbing = false;
       ballsasorberIODev.stopsucking();
-    }
-    if (xboxController.getAButtonPressed() == true && asorbing == false) {
+    }else if (xboxController.getAButtonPressed() == true && asorbing == false) {
         ballsshooterIODev.startshooting(1);
         throwing = true;
-    }
-
-    if (xboxController.getAButtonReleased() == true && throwing == true){
+    }else if (xboxController.getAButtonReleased() == true && throwing == true){
       throwing = false;
       ballsshooterIODev.stopshooting();
-    }
-
-
-    if (xboxController.getLeftX() == 1){
+    }else if (xboxController.getLeftX() == 1){
       if (moving == false) {
         drivebaseIODev.turn(1,"right");
         moving = true;
@@ -148,8 +141,7 @@ public class Robot extends LoggedRobot {
         drivebaseIODev.stop();
         drivebaseIODev.turn(1,"right");
       }
-    }
-    if (xboxController.getLeftX() == -1){
+    }else if (xboxController.getLeftX() == -1){
       if (moving == false) {
         drivebaseIODev.turn(1,"left");
         moving = true;
@@ -157,8 +149,7 @@ public class Robot extends LoggedRobot {
         drivebaseIODev.stop();
         drivebaseIODev.turn(1,"left");
       }
-    }
-    if (xboxController.getLeftY() == -1 ){
+    }else if (xboxController.getLeftY() == -1 ){
       if (moving == false) {
         drivebaseIODev.forward(1);
         moving = true;
@@ -166,8 +157,7 @@ public class Robot extends LoggedRobot {
         drivebaseIODev.stop();
         drivebaseIODev.forward(1);
       }
-    }
-    if (xboxController.getLeftY() == 1 ){
+    }else if (xboxController.getLeftY() == 1 ){
       if (moving == false) {
         drivebaseIODev.backward(1);
         moving = true;
@@ -175,8 +165,7 @@ public class Robot extends LoggedRobot {
         drivebaseIODev.stop();
         drivebaseIODev.backward(1);
       }
-    }
-    if(xboxController.getLeftY() < -0.2 && xboxController.getLeftY() > 0.2 && xboxController.getLeftX() < -0.2 && xboxController.getLeftX() > 0.2){
+    }else if(xboxController.getLeftY() < -0.2 && xboxController.getLeftY() > 0.2 && xboxController.getLeftX() < -0.2 && xboxController.getLeftX() > 0.2){
       drivebaseIODev.stop();
       moving = false;
     }
